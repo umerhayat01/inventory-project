@@ -7,6 +7,7 @@ import { UsersModule } from './users/users.module';
 import { GraphQLModule } from '@nestjs/graphql';
 import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 import { join } from 'path';
+import { RolesModule } from './roles/roles.module';
 
 @Module({
   imports: [
@@ -16,6 +17,7 @@ import { join } from 'path';
     }),
     TypeOrmModule.forRoot(dataSourceOptions),
     UsersModule,
+    RolesModule,
   ],
   controllers: [AppController],
   providers: [AppService],

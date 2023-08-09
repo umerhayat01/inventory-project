@@ -6,8 +6,9 @@ export const dataSourceOptions: DataSourceOptions = {
   username: 'postgres', // Database username
   password: 'newpassword', // Database password
   database: 'inventory', // Database name
-  entities: [], // Specify your entities here
-  synchronize: true, // Auto create tables (for development only)
+  entities: ['dist/**/*.entity.js'],
+  migrations: ['dist/db/migration/*.js'], // Specify your entities here
+  synchronize: false, // Auto create tables (for development only)
 };
 const dataSource = new DataSource(dataSourceOptions);
 export default dataSource;
