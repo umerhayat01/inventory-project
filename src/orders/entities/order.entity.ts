@@ -1,5 +1,14 @@
 import { ObjectType, Field, Int, registerEnumType } from '@nestjs/graphql';
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Product } from 'src/products/entities/product.entity';
+import { User } from 'src/users/entities/user.entity';
+import {
+  Column,
+  Entity,
+  JoinColumn,
+  ManyToOne,
+  OneToMany,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
 
 export enum status {
   PENDING = 'pending',
@@ -20,4 +29,12 @@ export class Order {
   @Column({ type: 'enum', enum: status, default: status.PENDING })
   @Field()
   orderStatus: status;
+
+  @ManyToOne(() => User)
+  @Field()
+  user: User;
+
+  @ManyToOne(() => Product)
+  @Field()
+  product: Product;
 }

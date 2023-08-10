@@ -1,5 +1,6 @@
 import { ObjectType, Field, Int, registerEnumType } from '@nestjs/graphql';
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Order } from 'src/orders/entities/order.entity';
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 
 export enum categories {
   APPAREL = 'apparel',
