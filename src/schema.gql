@@ -9,15 +9,57 @@ type User {
   email: String!
 }
 
+type Role {
+  id: Int!
+  name: String!
+}
+
+type UserRole {
+  id: Int!
+}
+
+type Product {
+  id: Int!
+  name: String!
+  description: String!
+  price: Float!
+  category: String!
+}
+
+type Order {
+  id: Int!
+  orderStatus: String!
+}
+
 type Query {
   users: [User!]!
   user(id: Int!): User!
+  roles: [Role!]!
+  role(id: Int!): Role!
+  userRoles: [UserRole!]!
+  userRole(id: Int!): UserRole!
+  products: [Product!]!
+  product(id: Int!): Product!
+  orders: [Order!]!
+  order(id: Int!): Order!
 }
 
 type Mutation {
   createUser(createUserInput: CreateUserInput!): User!
   updateUser(updateUserInput: UpdateUserInput!): User!
   removeUser(id: Int!): User!
+  createRole(createRoleInput: CreateRoleInput!): Role!
+  updateRole(updateRoleInput: UpdateRoleInput!): Role!
+  removeRole(id: Int!): Role!
+  createUserRole(createUserRoleInput: CreateUserRoleInput!): UserRole!
+  updateUserRole(updateUserRoleInput: UpdateUserRoleInput!): UserRole!
+  removeUserRole(id: Int!): UserRole!
+  createProduct(createProductInput: CreateProductInput!): Product!
+  updateProduct(updateProductInput: UpdateProductInput!): Product!
+  removeProduct(id: Int!): Product!
+  createOrder(createOrderInput: CreateOrderInput!): Order!
+  updateOrder(updateOrderInput: UpdateOrderInput!): Order!
+  removeOrder(id: Int!): Order!
 }
 
 input CreateUserInput {
@@ -26,6 +68,50 @@ input CreateUserInput {
 }
 
 input UpdateUserInput {
+  """Example field (placeholder)"""
+  exampleField: Int
+  id: Int!
+}
+
+input CreateRoleInput {
+  """Example field (placeholder)"""
+  exampleField: Int!
+}
+
+input UpdateRoleInput {
+  """Example field (placeholder)"""
+  exampleField: Int
+  id: Int!
+}
+
+input CreateUserRoleInput {
+  """Example field (placeholder)"""
+  exampleField: Int!
+}
+
+input UpdateUserRoleInput {
+  """Example field (placeholder)"""
+  exampleField: Int
+  id: Int!
+}
+
+input CreateProductInput {
+  """Example field (placeholder)"""
+  exampleField: Int!
+}
+
+input UpdateProductInput {
+  """Example field (placeholder)"""
+  exampleField: Int
+  id: Int!
+}
+
+input CreateOrderInput {
+  """Example field (placeholder)"""
+  exampleField: Int!
+}
+
+input UpdateOrderInput {
   """Example field (placeholder)"""
   exampleField: Int
   id: Int!

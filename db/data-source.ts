@@ -7,7 +7,7 @@ export const dataSourceOptions: DataSourceOptions = {
   password: 'newpassword', // Database password
   database: 'inventory', // Database name
   entities: ['dist/**/*.entity.js'],
-  migrations: ['dist/db/migration/*.js'], // Specify your entities here
+  migrations: ['dist/db/migrations/*.js'], // Specify your entities here
   synchronize: false, // Auto create tables (for development only)
 };
 const dataSource = new DataSource(dataSourceOptions);

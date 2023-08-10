@@ -1,24 +1,23 @@
 import { ObjectType, Field, Int, registerEnumType } from '@nestjs/graphql';
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
-export enum roles {
-  SUPER = 'super Admin',
-  ADMIN = 'admin',
-  MEMBER = 'member',
+export enum status {
+  PENDING = 'pending',
+  APPROVED = 'Approved',
 }
 
-registerEnumType(roles, {
-  name: 'roles',
+registerEnumType(status, {
+  name: 'staus',
 });
 
 @Entity()
 @ObjectType()
-export class Role {
+export class Order {
   @PrimaryGeneratedColumn()
   @Field((type) => Int)
   id: number;
 
-  @Column({ type: 'enum', enum: roles, default: roles.MEMBER })
+  @Column({ type: 'enum', enum: status, default: status.PENDING })
   @Field()
-  name: roles;
+  orderStatus: status;
 }
