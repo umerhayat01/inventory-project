@@ -69,13 +69,15 @@ type Mutation {
 }
 
 input CreateUserInput {
-  """Example field (placeholder)"""
-  exampleField: Int!
+  name: String!
+  password: String!
+  email: Float!
 }
 
 input UpdateUserInput {
-  """Example field (placeholder)"""
-  exampleField: Int
+  name: String
+  password: String
+  email: Float
   id: Int!
 }
 
@@ -91,13 +93,13 @@ input UpdateRoleInput {
 }
 
 input CreateUserRoleInput {
-  """Example field (placeholder)"""
-  exampleField: Int!
+  userId: Float!
+  roleId: Float!
 }
 
 input UpdateUserRoleInput {
-  """Example field (placeholder)"""
-  exampleField: Int
+  userId: Float
+  roleId: Float
   id: Int!
 }
 
