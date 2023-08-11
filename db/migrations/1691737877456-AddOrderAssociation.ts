@@ -1,11 +1,11 @@
 import { MigrationInterface, QueryRunner } from "typeorm";
 
-export class AddOrderAssociations1691665400583 implements MigrationInterface {
-    name = 'AddOrderAssociations1691665400583'
+export class AddOrderAssociation1691737877456 implements MigrationInterface {
+    name = 'AddOrderAssociation1691737877456'
 
     public async up(queryRunner: QueryRunner): Promise<void> {
-        await queryRunner.query(`ALTER TABLE "order" ADD "userId" integer`);
-        await queryRunner.query(`ALTER TABLE "order" ADD "productId" integer`);
+        await queryRunner.query(`ALTER TABLE "order" ADD "userId" integer NOT NULL`);
+        await queryRunner.query(`ALTER TABLE "order" ADD "productId" integer NOT NULL`);
         await queryRunner.query(`ALTER TABLE "order" ADD CONSTRAINT "FK_caabe91507b3379c7ba73637b84" FOREIGN KEY ("userId") REFERENCES "user"("id") ON DELETE NO ACTION ON UPDATE NO ACTION`);
         await queryRunner.query(`ALTER TABLE "order" ADD CONSTRAINT "FK_88991860e839c6153a7ec878d39" FOREIGN KEY ("productId") REFERENCES "product"("id") ON DELETE NO ACTION ON UPDATE NO ACTION`);
     }

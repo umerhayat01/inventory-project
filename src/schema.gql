@@ -5,13 +5,7 @@
 type Role {
   id: Int!
   name: String!
-  userRoles: UserRole!
-}
-
-type UserRole {
-  id: Int!
-  user: User!
-  role: Role!
+  users: [User!]!
 }
 
 type User {
@@ -19,7 +13,7 @@ type User {
   name: String!
   password: String!
   email: String!
-  userRoles: UserRole!
+  roles: [Role!]!
 }
 
 type Product {
@@ -33,17 +27,11 @@ type Product {
 type Order {
   id: Int!
   orderStatus: String!
-  user: User!
-  product: Product!
 }
 
 type Query {
   users: [User!]!
   user(id: Int!): User!
-  roles: [Role!]!
-  role(id: Int!): Role!
-  userRoles: [UserRole!]!
-  userRole(id: Int!): UserRole!
   products: [Product!]!
   getProductById(id: Int!): Product!
   orders: [Order!]!
@@ -54,12 +42,6 @@ type Mutation {
   registerUser(createUserInput: CreateUserInput!): User!
   updateUser(updateUserInput: UpdateUserInput!): User!
   removeUser(id: Int!): User!
-  createRole(createRoleInput: CreateRoleInput!): Role!
-  updateRole(updateRoleInput: UpdateRoleInput!): Role!
-  removeRole(id: Int!): Role!
-  createUserRole(createUserRoleInput: CreateUserRoleInput!): UserRole!
-  updateUserRole(updateUserRoleInput: UpdateUserRoleInput!): UserRole!
-  removeUserRole(id: Int!): UserRole!
   createProduct(createProductInput: CreateProductInput!): Product!
   updateProduct(updateProductInput: UpdateProductInput!): Product!
   removeProduct(id: Int!): Product!
@@ -78,28 +60,6 @@ input UpdateUserInput {
   name: String
   password: String
   email: Float
-  id: Int!
-}
-
-input CreateRoleInput {
-  """Example field (placeholder)"""
-  exampleField: Int!
-}
-
-input UpdateRoleInput {
-  """Example field (placeholder)"""
-  exampleField: Int
-  id: Int!
-}
-
-input CreateUserRoleInput {
-  userId: Float!
-  roleId: Float!
-}
-
-input UpdateUserRoleInput {
-  userId: Float
-  roleId: Float
   id: Int!
 }
 

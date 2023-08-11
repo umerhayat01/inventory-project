@@ -1,11 +1,17 @@
 import { ObjectType, Field, Int, registerEnumType } from '@nestjs/graphql';
-import { UserRole } from 'src/user-roles/entities/user-role.entity';
-import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  ManyToMany,
+  OneToMany,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
+import { User } from './user.entity';
 
 export enum roles {
-  SUPER = 'super Admin',
-  ADMIN = 'admin',
-  MEMBER = 'member',
+  SUPER = 'Super Admin',
+  ADMIN = 'Admin',
+  MEMBER = 'Member',
 }
 
 registerEnumType(roles, {
@@ -23,7 +29,7 @@ export class Role {
   @Field()
   name: roles;
 
-  @OneToMany(() => UserRole, (userRole) => userRole.role)
-  @Field((type) => UserRole)
-  userRoles: UserRole[];
+  @Field((type) => [User])
+  @ManyToMany(() => User, (user) => user.roles)
+  users: User[];
 }

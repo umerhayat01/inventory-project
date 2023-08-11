@@ -7,8 +7,6 @@ import { UsersModule } from './users/users.module';
 import { GraphQLModule } from '@nestjs/graphql';
 import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 import { join } from 'path';
-import { RolesModule } from './roles/roles.module';
-import { UserRolesModule } from './user-roles/user-roles.module';
 import { ProductsModule } from './products/products.module';
 import { OrdersModule } from './orders/orders.module';
 
@@ -20,8 +18,6 @@ import { OrdersModule } from './orders/orders.module';
     }),
     TypeOrmModule.forRoot(dataSourceOptions),
     UsersModule,
-    RolesModule,
-    UserRolesModule,
     ProductsModule,
     OrdersModule,
   ],

@@ -30,6 +30,14 @@ export class Order {
   @Field()
   orderStatus: status;
 
+  @Column()
+  @Field()
+  userId: number;
+
+  @Column()
+  @Field()
+  productId: number;
+
   @ManyToOne(() => User)
   @Field()
   user: User;
