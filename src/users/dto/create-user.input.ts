@@ -1,5 +1,5 @@
-import { InputType, Int, Field } from '@nestjs/graphql';
-import { Role } from '../entities/roles.entity';
+import { InputType, Field } from '@nestjs/graphql';
+import { Role, roles } from '../entities/roles.entity';
 
 @InputType()
 export class CreateUserInput {
@@ -12,6 +12,6 @@ export class CreateUserInput {
   @Field()
   email: string;
 
-  @Field()
+  @Field((type) => [roles])
   roles: Role[];
 }

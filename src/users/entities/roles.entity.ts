@@ -26,7 +26,7 @@ export class Role {
   id: number;
 
   @Column({ type: 'enum', enum: roles, default: roles.MEMBER })
-  @Field()
+  @Field((type) => roles)
   name: roles;
 
   @Field((type) => [User])

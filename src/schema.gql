@@ -4,8 +4,14 @@
 
 type Role {
   id: Int!
-  name: String!
+  name: roles!
   users: [User!]!
+}
+
+enum roles {
+  SUPER
+  ADMIN
+  MEMBER
 }
 
 type User {
@@ -27,10 +33,14 @@ type Product {
 type Order {
   id: Int!
   orderStatus: String!
+  userId: Float!
+  productId: Float!
+  user: User!
+  product: Product!
 }
 
 type Query {
-  users: [User!]!
+  getAllUsers: [User!]!
   user(id: Int!): User!
   products: [Product!]!
   getProductById(id: Int!): Product!
@@ -42,6 +52,7 @@ type Mutation {
   registerUser(createUserInput: CreateUserInput!): User!
   updateUser(updateUserInput: UpdateUserInput!): User!
   removeUser(id: Int!): User!
+  createRoles: Role!
   createProduct(createProductInput: CreateProductInput!): Product!
   updateProduct(updateProductInput: UpdateProductInput!): Product!
   removeProduct(id: Int!): Product!
@@ -53,13 +64,15 @@ type Mutation {
 input CreateUserInput {
   name: String!
   password: String!
-  email: Float!
+  email: String!
+  roles: [roles!]!
 }
 
 input UpdateUserInput {
   name: String
   password: String
-  email: Float
+  email: String
+  roles: [roles!]
   id: Int!
 }
 

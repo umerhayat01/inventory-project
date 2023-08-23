@@ -3,6 +3,7 @@ import { UsersService } from './users.service';
 import { User } from './entities/user.entity';
 import { CreateUserInput } from './dto/create-user.input';
 import { UpdateUserInput } from './dto/update-user.input';
+import { Role } from './entities/roles.entity';
 
 @Resolver(() => User)
 export class UsersResolver {
@@ -15,23 +16,28 @@ export class UsersResolver {
     return await this.usersService.registerUser(createUserInput);
   }
 
-  @Query(() => [User], { name: 'users' })
-  findAll() {
-    return this.usersService.findAll();
+  @Query(() => [User])
+  getAllUsers() {
+    return this.usersService.getAllUsers();
   }
 
   @Query(() => User, { name: 'user' })
-  findOne(@Args('id', { type: () => Int }) id: number) {
-    return this.usersService.findOne(id);
+  getUserById(@Args('id', { type: () => Int }) id: number) {
+    return this.usersService.getUserById(id);
   }
 
   @Mutation(() => User)
   updateUser(@Args('updateUserInput') updateUserInput: UpdateUserInput) {
-    return this.usersService.update(updateUserInput.id, updateUserInput);
+    return this.usersService.updateUser(updateUserInput.id, updateUserInput);
   }
 
   @Mutation(() => User)
   removeUser(@Args('id', { type: () => Int }) id: number) {
     return this.usersService.remove(id);
+  }
+
+  @Mutation(() => Role)
+  async createRoles(): Promise<Role> {
+    return await this.usersService.createRoles();
   }
 }
